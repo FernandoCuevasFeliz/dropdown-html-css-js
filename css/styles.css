@@ -1,0 +1,117 @@
+:root {
+  /* colors */
+  --black: #2f3640;
+  --white: #ffffff;
+  --bg: #dff9fb;
+  --selected: #3498db;
+
+  /* font */
+  --base: 16px;
+
+  /* margins and paddings */
+  --s-1: 0.5em;
+  --s-2: 0.75em;
+  --s-3: 1em;
+  --s-4: 1.25em;
+
+  /* others */
+  --b-radius: var(--s-1);
+  --b-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --scroll-bar: rgba(47, 54, 64, 0.3);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--base);
+  color: var(--black);
+  background-color: var(--bg);
+}
+
+.dropdown-container {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown {
+  max-width: 300px;
+  min-width: 300px;
+  padding: var(--s-1) var(--s-4);
+
+  border-radius: var(--b-radius);
+  box-shadow: var(--b-shadow);
+  cursor: pointer;
+  background-color: var(--white);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+.dropdown__title {
+  margin-right: var(--s-2);
+}
+
+.dropdown__options {
+  width: 100%;
+  height: 0;
+  max-height: 200px;
+  list-style: none;
+  border-radius: var(--b-radius);
+  box-shadow: var(--b-shadow);
+  background-color: var(--white);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  position: absolute;
+  left: 0;
+  top: 50px;
+
+  transition: height 500ms ease-in-out;
+}
+.dropdown__options--active {
+  height: 200px;
+  transition: height 500ms ease-in-out;
+}
+
+.dropdown__options::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.dropdown__options::-webkit-scrollbar:vertical {
+  width: 4px;
+}
+
+.dropdown__options::-webkit-scrollbar-button:increment,
+.dropdown__options::-webkit-scrollbar-button {
+  display: none;
+}
+
+.dropdown__options::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-bar);
+  border-radius: var(--b-radius);
+}
+.dropdown__options::-webkit-scrollbar-track {
+  border-radius: var(--b-radius);
+}
+
+.dropdown__option {
+  padding: var(--s-1) var(--s-3);
+}
+
+.dropdown__option--active,
+.dropdown__option:hover,
+.dropdown__option:active {
+  color: var(--selected);
+}
